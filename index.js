@@ -1,28 +1,42 @@
 'use strict';
 const sm = require('@mapbox/sphericalmercator');
 const getPixels = require("get-pixels");
+const locking = require('@mapbox/locking');
+
+const _getPixels = (url, callback) => {
+  return getPixels(url, null, callback);
+};
+
+const cachedGetPixels = locking(_getPixels);
 
 
-class RGBquery {
-  constructor(tileSize) {
+class TerrainRGBquery {
+  constructor(endpoint, tileSize) {
+    if (!/.*\{z\}\/\{x\}\/\{y\}.*/.test(endpoint)) {
+      throw new Error(`Endpoint ${endpoint} should include {z}/{x}/{y}`);
+    }
+    this.endpoint = endpoint;
     this.tileSize = tileSize || 256;
     this.merc = new sm({size: this.tileSize});
   };
 
-  queryElevation(lnglat, endpoint, zoom) {
+  queryElevations(lnglats, zoom) {
+    return Promise.all(lnglats.map((lnglat) => {
+      return this.queryElevation(lnglat, zoom);
+    }));
+  }
+
+  queryElevation(lnglat, zoom) {
     zoom = zoom || 14;
     return new Promise((resolve, reject) => {
-      if (!/.*\{z\}\/\{x\}\/\{y\}.*/.test(endpoint)) {
-        return reject(new Error(`Endpoint ${endpoint} should include {z}/{x}/{y}`))
-      }
       const px = this.merc.px(lnglat, zoom);
       const xy = px.map((coord)=> {
         return Math.floor(coord / this.tileSize);
       });
       const tile = `${zoom}/${xy[0]}/${xy[1]}`;
-      const url = endpoint.replace(/\{z\}\/\{x\}\/\{y\}/, tile);
+      const url = this.endpoint.replace(/\{z\}\/\{x\}\/\{y\}/, tile);
 
-      return getPixels(url, null, (err, resp) => {
+      return cachedGetPixels(url, (err, resp) => {
         if (err) return reject(err);
 
         const tilePx = this.merc.px(lnglat, zoom).map((coord) => {
@@ -42,4 +56,4 @@ class RGBquery {
   };
 };
 
-module.exports.RGBquery = RGBquery;
+module.exports.TerrainRGBquery = TerrainRGBquery;
