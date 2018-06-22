@@ -49,3 +49,11 @@ Then you can query elevations by lng, lat:
 $ get-elev '[-122.16579, 42.92128]'
 2170.7000000000007
 ```
+
+
+### Browser
+Barebones demo application in `/demo` -- click on map to query elevation.
+```
+$ npm start
+```
+And then open http://localhost:5000/demo/
