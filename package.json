@@ -10,7 +10,9 @@
     "get-pixels": "^3.3.0"
   },
   "devDependencies": {
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "browserify": "*",
+    "serve": "*"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,9 @@
   },
   "bin": {
     "get-elev": "bin/cli.js"
+  },
+  "scripts": {
+    "start": "browserify index.js > bundle.js && serve"
   },
   "author": "Damon Burgett",
   "license": "MIT"

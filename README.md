@@ -52,7 +52,7 @@ $ get-elev '[-122.16579, 42.92128]'
 
 
 ### Browser
-Barebones demo application in `/demo` -- click on map to query elevation.
+Barebones demo application in `/demo` -- click on map to query elevation.  
 ```
 $ npm start
 ```

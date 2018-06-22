@@ -3,7 +3,7 @@ const sm = require('@mapbox/sphericalmercator');
 const getPixels = require("get-pixels");
 
 
-class RGBquery {
+class TerrainRGBquery {
   constructor(tileSize) {
     this.tileSize = tileSize || 256;
     this.merc = new sm({size: this.tileSize});
@@ -42,4 +42,4 @@ class RGBquery {
   };
 };
 
-module.exports.RGBquery = RGBquery;
+module.exports.TerrainRGBquery = TerrainRGBquery;

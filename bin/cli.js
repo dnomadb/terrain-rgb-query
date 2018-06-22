@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-const RGBquery = require('../index.js');
+const terrainRGBquery = require('../index.js');
 const argv = require('minimist')(process.argv.slice(2));
 
 
@@ -10,9 +10,9 @@ if (!process.env.MapboxAccessToken) throw new Error("A valid MapboxAccessToken m
 const lnglat = JSON.parse(argv._[0]);
 const template = `https://a.tiles.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token=${process.env.MapboxAccessToken}`;
 
-const RGB = new RGBquery.RGBquery();
+const TRGB = new terrainRGBquery.TerrainRGBquery();
 
-RGB.queryElevation(lnglat, template)
+TRGB.queryElevation(lnglat, template)
   .then((elevation) => {
     console.log(elevation)
   })
