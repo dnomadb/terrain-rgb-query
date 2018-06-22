@@ -17,6 +17,7 @@ it was primarily written to query `mapbox.terrain-rgb`. You'll need a valid Mapb
 
 ### API
 ```javascript
+const RGB = new RGBquery.RGBquery();
 // a templated url to query against -- needs to include {z}/{x}/{y}
 const template = "https://a.tiles.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.pngraw?access_token={your MapboxAccessToken here!}";
 const lnglat = [-122.16579, 42.92128];
