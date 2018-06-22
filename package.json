@@ -1,0 +1,24 @@
+{
+  "name": "terrain-rgb-query",
+  "version": "0.1.0",
+  "description": "Query elevation values from an rgb-encoded tileset",
+  "engines": {
+    "node": "8.0.0"
+  },
+  "dependencies": {
+    "@mapbox/sphericalmercator": "^1.0.5",
+    "get-pixels": "^3.3.0"
+  },
+  "devDependencies": {
+    "minimist": "^1.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dnomadb/terrain-rgb-query"
+  },
+  "bin": {
+    "get-elev": "bin/cli.js"
+  },
+  "author": "Damon Burgett",
+  "license": "MIT"
+}
