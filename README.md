@@ -39,7 +39,7 @@ RGB.queryElevation(lnglat, template, zoom)
   })
 ```
 
-### cli
+### CLI
 You'll need a valid mapbox access token exported to your environment:
 ```bash
 $ export MapboxAccessToken=pk.{....}
