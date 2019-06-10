@@ -1,9 +1,9 @@
 {
   "name": "terrain-rgb-query",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Query elevation values from an rgb-encoded tileset",
   "engines": {
-    "node": "8.0.0"
+    "node": ">=8.0.0"
   },
   "dependencies": {
     "@mapbox/locking": "^3.1.0",
