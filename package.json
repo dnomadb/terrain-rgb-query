@@ -8,7 +8,11 @@
   "dependencies": {
     "@mapbox/locking": "^3.1.0",
     "@mapbox/sphericalmercator": "^1.0.5",
-    "get-pixels": "^3.3.0"
+    "@mapbox/tilebelt": "^1.0.2",
+    "get-pixels": "^3.3.0",
+    "ndarray": "^1.0.19",
+    "ndarray-linear-interpolate": "^1.0.0",
+    "util": "^0.12.3"
   },
   "devDependencies": {
     "minimist": "^1.2.0",
